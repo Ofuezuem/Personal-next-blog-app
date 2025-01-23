@@ -1,9 +1,9 @@
 import React from 'react'
+import { Button } from 'flowbite-react'
+
 
 export default function page() {
   return (
-    <div>
-      <h1 className='text-red-950 text-center'>Home</h1>
-    </div>
+    <Button>Home</Button>
   )
 }
