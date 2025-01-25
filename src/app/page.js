@@ -4,6 +4,8 @@ import { Button } from 'flowbite-react'
 
 export default function page() {
   return (
-    <Button>Home</Button>
+    <div className='items-center'>
+      <Button>Home</Button>
+    </div>
   )
 }
