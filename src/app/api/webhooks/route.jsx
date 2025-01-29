@@ -1,4 +1,4 @@
-import { Webhook } from 'svix'
+import { Webhook } from 'svix';
 import { headers } from 'next/headers'
 
 export async function POST(req) {
