@@ -59,5 +59,5 @@ export async function POST(req) {
     console.log('user updated:', evt.data.id);
   }
 
-  return new Response('Webhook received', { status: 200 });
+  return new Response('Webhook received', { status: 200 })
 }
