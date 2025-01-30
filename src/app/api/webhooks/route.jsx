@@ -1,4 +1,4 @@
-import { Webhook } from 'svix';
+import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 
 export async function POST(req) {
@@ -27,16 +27,13 @@ export async function POST(req) {
   // Get body
   const payload = await req.json()
   const body = JSON.stringify(payload)
-
-  let evt
-
   // Verify payload with headers
   try {
     evt = wh.verify(body, {
       'svix-id': svix_id,
       'svix-timestamp': svix_timestamp,
       'svix-signature': svix_signature,
-    })
+    }) 
   } catch (err) {
     console.error('Error: Could not verify webhook:', err)
     return new Response('Error: Verification error', {
@@ -49,14 +46,15 @@ export async function POST(req) {
   const { id } = evt.data
   const eventType = evt.type
   console.log(`Received webhook with ID ${id} and event type of ${eventType}`)
-  console.log('Webhook payload:', body);
+  console.log('Webhook payload:', body)
 
-  if (evt.type === 'user.created') {
-    console.log('userId:', evt.data.id);
+  if(eventType === 'user.created') {
+    // Do something with user created event
+    console.log('User created:', body)
   }
-
-  if (evt.type === 'user.updated') {
-    console.log('user updated:', evt.data.id);
+  if(eventType === 'user.updated') {
+    // Do something with user updated event
+    console.log('User updated:', body)
   }
 
   return new Response('Webhook received', { status: 200 })
